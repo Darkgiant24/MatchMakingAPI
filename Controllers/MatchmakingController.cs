@@ -18,7 +18,7 @@ namespace PlayerMatchmakingAPI.Controllers
             _playerService = playerService;
         }
 
-        // Endpoint pour enregistrer un serveur
+       
         [HttpPost("register")]
         public IActionResult RegisterServer([FromBody] ServerInfo serverInfo)
         {
@@ -26,17 +26,12 @@ namespace PlayerMatchmakingAPI.Controllers
             return Ok(new { serverIp });
         }
 
-        // Endpoint pour rejoindre un serveur
+    
         [HttpPost("join")]
-        [Authorize]  // Assurez-vous que l'utilisateur est authentifié avec JWT
+        [Authorize]  
         public IActionResult JoinServer([FromBody] PlayerRequest playerRequest)
         {
-            // Récupérer l'utilisateur authentifié à partir du service PlayerService
-            var username = User.Identity?.Name; 
-            if (string.IsNullOrEmpty(username))
-            {
-                return Unauthorized("User is not authenticated");
-            }
+            var username = User.Identity.Name;  
             var player = _playerService.GetPlayerByUsername(username);
 
             if (player == null)
@@ -44,7 +39,7 @@ namespace PlayerMatchmakingAPI.Controllers
                 return Unauthorized(new { message = "Player not found." });
             }
 
-            // Le joueur rejoint un serveur
+            
             var serverIp = _matchmakingService.JoinServer(player);
 
             if (serverIp == "No available servers.")

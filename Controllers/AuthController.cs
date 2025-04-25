@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
-using System.Security.Claims;  // Ajoutez cette directive pour accéder à Claim
+using System.Security.Claims;  
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Text;
 using PlayerMatchmakingAPI.Services;
-using PlayerMatchmakingAPI.Models;  // Assurez-vous d'importer le modèle LoginRequest
+using PlayerMatchmakingAPI.Models;  
 
 namespace PlayerMatchmakingAPI.Controllers
 {
