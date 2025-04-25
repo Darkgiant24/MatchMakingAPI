@@ -1,18 +1,53 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using PlayerMatchmakingAPI.Models;
+
+
 namespace PlayerMatchmakingAPI.Services
 {
     public class MatchmakingService
     {
-        private readonly List<string> servers = new List<string>();
+        
+        private readonly Dictionary<string, List<Player>> _servers = new Dictionary<string, List<Player>>();
 
+        
+        private const int MaxPlayersPerServer = 2;
+
+        
         public string RegisterServer(string serverIp)
         {
-            servers.Add(serverIp);
+            
+            if (!_servers.ContainsKey(serverIp))
+            {
+                _servers[serverIp] = new List<Player>(); 
+            }
+
             return serverIp;
         }
 
-        public string? GetAvailableServer()
+        
+        public string JoinServer(Player player)
         {
-            return servers.FirstOrDefault();
+            
+            foreach (var server in _servers)
+            {
+                
+                if (server.Value.Count < MaxPlayersPerServer)
+                {
+                    server.Value.Add(player);
+                    return server.Key; 
+                }
+            }
+
+            
+            return "No available servers.";
+        }
+
+        
+        public Dictionary<string, List<Player>> GetServers()
+        {
+            return _servers;
         }
     }
 }

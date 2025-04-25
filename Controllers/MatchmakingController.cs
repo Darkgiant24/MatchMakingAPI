@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
-using PlayerMatchmakingAPI.Services;  
+using PlayerMatchmakingAPI.Services;
 using PlayerMatchmakingAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PlayerMatchmakingAPI.Controllers
 {
@@ -10,28 +10,49 @@ namespace PlayerMatchmakingAPI.Controllers
     public class MatchmakingController : ControllerBase
     {
         private readonly MatchmakingService _matchmakingService;
+        private readonly PlayerService _playerService;
 
-        public MatchmakingController(MatchmakingService matchmakingService)
+        public MatchmakingController(MatchmakingService matchmakingService, PlayerService playerService)
         {
             _matchmakingService = matchmakingService;
+            _playerService = playerService;
         }
 
+        // Endpoint pour enregistrer un serveur
         [HttpPost("register")]
         public IActionResult RegisterServer([FromBody] ServerInfo serverInfo)
         {
             var serverIp = _matchmakingService.RegisterServer(serverInfo.ServerIp);
-            return Ok(new { ServerIp = serverIp });
+            return Ok(new { serverIp });
         }
 
+        // Endpoint pour rejoindre un serveur
         [HttpPost("join")]
-        [Authorize]
-        public IActionResult JoinMatchmaking([FromBody] PlayerRequest playerRequest)
+        [Authorize]  // Assurez-vous que l'utilisateur est authentifié avec JWT
+        public IActionResult JoinServer([FromBody] PlayerRequest playerRequest)
         {
-            var serverIp = _matchmakingService.GetAvailableServer();
-            if (serverIp == null)
-                return NotFound("No servers available");
+            // Récupérer l'utilisateur authentifié à partir du service PlayerService
+            var username = User.Identity?.Name; 
+            if (string.IsNullOrEmpty(username))
+            {
+                return Unauthorized("User is not authenticated");
+            }
+            var player = _playerService.GetPlayerByUsername(username);
 
-            return Ok(new { ServerIp = serverIp });
+            if (player == null)
+            {
+                return Unauthorized(new { message = "Player not found." });
+            }
+
+            // Le joueur rejoint un serveur
+            var serverIp = _matchmakingService.JoinServer(player);
+
+            if (serverIp == "No available servers.")
+            {
+                return BadRequest(new { message = "No available servers." });
+            }
+
+            return Ok(new { serverIp });
         }
     }
 }

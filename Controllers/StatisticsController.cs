@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using PlayerMatchmakingAPI.Services;  // Ajoutez cette directive pour accéder à PlayerService
+using PlayerMatchmakingAPI.Services;  
 using PlayerMatchmakingAPI.Models;
 
 namespace PlayerMatchmakingAPI.Controllers

@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "dczZ8Q9kgOQWvU32xwkJO8VmzW93DLcgEXGhZDkPVfY=",
+  "Source": "PlayerMatchmakingAPI",
+  "BasePath": "_content/PlayerMatchmakingAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
