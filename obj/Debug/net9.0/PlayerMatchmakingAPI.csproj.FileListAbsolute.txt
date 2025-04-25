@@ -1,0 +1,7 @@
+C:\Users\grego\OneDrive\Bureau\PlayerMatchmakingAPI\obj\Debug\net9.0\PlayerMatchmakingAPI.csproj.AssemblyReference.cache
+C:\Users\grego\OneDrive\Bureau\PlayerMatchmakingAPI\obj\Debug\net9.0\PlayerMatchmakingAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\grego\OneDrive\Bureau\PlayerMatchmakingAPI\obj\Debug\net9.0\PlayerMatchmakingAPI.AssemblyInfoInputs.cache
+C:\Users\grego\OneDrive\Bureau\PlayerMatchmakingAPI\obj\Debug\net9.0\PlayerMatchmakingAPI.AssemblyInfo.cs
+C:\Users\grego\OneDrive\Bureau\PlayerMatchmakingAPI\obj\Debug\net9.0\PlayerMatchmakingAPI.csproj.CoreCompileInputs.cache
+C:\Users\grego\OneDrive\Bureau\PlayerMatchmakingAPI\obj\Debug\net9.0\PlayerMatchmakingAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\grego\OneDrive\Bureau\PlayerMatchmakingAPI\obj\Debug\net9.0\PlayerMatchmakingAPI.MvcApplicationPartsAssemblyInfo.cache

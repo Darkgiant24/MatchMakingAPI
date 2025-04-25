@@ -1,0 +1,6 @@
+@PlayerMatchmakingAPI_HostAddress = http://localhost:5027
+
+GET {{PlayerMatchmakingAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
