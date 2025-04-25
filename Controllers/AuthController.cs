@@ -39,8 +39,8 @@ namespace PlayerMatchmakingAPI.Controllers
                 new Claim(ClaimTypes.Name, username)
             };
 
-            // Augmenter la taille de la clé à 16 caractères (128 bits)
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("your_128_bits_secret_key_here_1234"));  // 128 bits = 16 caractères minimum
+            
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("your_128_bits_secret_key_here_1234"));  
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(
