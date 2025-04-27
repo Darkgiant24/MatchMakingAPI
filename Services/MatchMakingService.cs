@@ -9,51 +9,61 @@ namespace PlayerMatchmakingAPI.Services
     {
         private readonly Dictionary<string, List<Player>> _servers = new Dictionary<string, List<Player>>();
         private const int MaxPlayersPerServer = 2;
-        private const int MaxSkillLevelDifference = 2; // Différence maximale de skillLevel autorisée
+        private const int MaxSkillLevelDifference = 2; 
 
-        // Enregistrer un serveur
+       
         public string RegisterServer(string serverIp)
         {
             if (!_servers.ContainsKey(serverIp))
             {
-                _servers[serverIp] = new List<Player>(); // Initialise une liste vide pour les joueurs
+                _servers[serverIp] = new List<Player>(); 
             }
 
             return serverIp;
         }
 
-        // Ajouter un joueur à un serveur
+       
         public string JoinServer(Player player)
         {
-            // Chercher un serveur où il y a de la place
+            
             foreach (var server in _servers)
             {
-                // Si le serveur a moins de 2 joueurs
+                
                 if (server.Value.Count < MaxPlayersPerServer)
                 {
-                    // Vérifier si le serveur a déjà un joueur
+                    
                     var existingPlayer = server.Value.FirstOrDefault();
                     if (existingPlayer != null)
                     {
-                        // Vérifier la différence de skillLevel entre les joueurs
+                        // A changer, ptet avec skilllevel a save sur le player?
                         if (Math.Abs(existingPlayer.GamesWon - player.GamesWon) > MaxSkillLevelDifference)
                         {
-                            // Si la différence de niveau est trop grande, essayez un autre serveur
                             continue;
                         }
                     }
 
-                    // Si on est ici, c'est qu'on peut ajouter le joueur au serveur
+                    
                     server.Value.Add(player);
-                    return server.Key; // Retourne l'IP du serveur où le joueur a été ajouté
+                    return server.Key; 
                 }
             }
 
-            // Si aucun serveur n'a de place, on retourne une erreur ou un message spécifique
-            return "No available servers.";
+            
+            return CreateAndJoinNewServer(player);
         }
 
-        // Récupérer les serveurs et leurs joueurs
+        private string CreateAndJoinNewServer(Player player)
+        {
+           
+            var newServerIp = "server" + Guid.NewGuid().ToString(); 
+
+            
+            _servers[newServerIp] = new List<Player> { player };
+
+            return newServerIp; 
+        }
+
+        
         public Dictionary<string, List<Player>> GetServers()
         {
             return _servers;

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PlayerMatchmakingAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4f3dba775d14aa9c187cfb773ed15d771d67576c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b7f7e39a17507226fde1b38df292e32a3a394e5d")]
 [assembly: System.Reflection.AssemblyProductAttribute("PlayerMatchmakingAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PlayerMatchmakingAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
