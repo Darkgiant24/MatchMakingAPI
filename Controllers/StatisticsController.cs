@@ -41,7 +41,8 @@ namespace PlayerMatchmakingAPI.Controllers
             {
                 GamesWon = player.GamesWon,
                 CubesCleared = player.CubesCleared,
-                Coins = player.Coins
+                Coins = player.Coins,
+                Cosmetics = player.Cosmetics
             });
         }
 

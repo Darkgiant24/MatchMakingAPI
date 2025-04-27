@@ -31,7 +31,11 @@ namespace PlayerMatchmakingAPI.Controllers
         [Authorize]  
         public IActionResult JoinServer()
         {
-            var username = User.Identity.Name;  
+            var username = User.Identity?.Name;  
+            if (string.IsNullOrEmpty(username))
+            {
+                return Unauthorized("User is not authenticated");
+            }
             var player = _playerService.GetPlayerByUsername(username);
 
             if (player == null)

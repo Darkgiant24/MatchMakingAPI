@@ -10,5 +10,6 @@ namespace PlayerMatchmakingAPI.Models
         public int GamesWon { get; set; }
         public int CubesCleared { get; set; }
         public int Coins { get; set; }
+        public List<string> Cosmetics { get; set; } = new List<string>();
     }
 }

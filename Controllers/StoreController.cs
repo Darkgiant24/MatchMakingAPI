@@ -18,7 +18,7 @@ namespace PlayerMatchmakingAPI.Controllers
             _playerService = playerService;
         }
 
-        // Endpoint pour récupérer la liste des cosmétiques disponibles
+        
         [HttpGet("cosmetics")]
         public IActionResult GetAvailableCosmetics()
         {
@@ -26,9 +26,9 @@ namespace PlayerMatchmakingAPI.Controllers
             return Ok(cosmetics);
         }
 
-        // Endpoint pour acheter un cosmétique
+        
         [HttpPost("buy")]
-        [Authorize]  // Assurez-vous que l'utilisateur est authentifié avec JWT
+        [Authorize] 
         public IActionResult BuyCosmetic([FromBody] PurchaseRequest purchaseRequest)
         {
             var username = User.Identity?.Name;  
@@ -43,7 +43,7 @@ namespace PlayerMatchmakingAPI.Controllers
                 return Unauthorized(new { message = "Player not found." });
             }
 
-            // Acheter un cosmétique pour ce joueur
+            
             var result = _storeService.BuyCosmetic(player.Id, purchaseRequest.CosmeticId);
 
 
@@ -59,7 +59,7 @@ namespace PlayerMatchmakingAPI.Controllers
         }
     }
 
-    // Demande pour acheter un cosmétique
+    
     public class PurchaseRequest
     {
         public int CosmeticId { get; set; }

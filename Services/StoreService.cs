@@ -17,9 +17,9 @@ namespace PlayerMatchmakingAPI.Services
             
             _availableCosmetics = new List<Cosmetic>
             {
-                new Cosmetic { Id = 1, Name = "Golden Skin", Description = "A rare golden skin for your character.", Price = 100},
-                new Cosmetic { Id = 2, Name = "Fire Emote", Description = "An emote with fire effects.", Price = 50},
-                new Cosmetic { Id = 3, Name = "Rocket Backpack", Description = "A cool rocket-powered backpack.", Price = 150}
+                new Cosmetic { Id = 1, Name = "Cosmetic 1", Description = "Il est la", Price = 100},
+                new Cosmetic { Id = 2, Name = "Cosmetic 2", Description = "Il est un peu plus la", Price = 50},
+                new Cosmetic { Id = 3, Name = "Cosmetic 3", Description = "Lui il est un peu moins la.", Price = 150}
             };
         }
 
@@ -51,9 +51,9 @@ namespace PlayerMatchmakingAPI.Services
             {
                 
                 player.Coins -= cosmetic.Price;
+                player.Cosmetics.Add(cosmetic.Name);
 
-                
-                // pour l'instnat il a juste dépensé son fric, mais il est pas conservé
+        
                 
                 return $"You have successfully purchased {cosmetic.Name}.";
             }

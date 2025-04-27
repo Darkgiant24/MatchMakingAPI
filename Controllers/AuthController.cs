@@ -32,6 +32,8 @@ namespace PlayerMatchmakingAPI.Controllers
             return Ok(new { Token = token });
         }
 
+        
+
         private string GenerateJwtToken(string username)
         {
             var claims = new[]
