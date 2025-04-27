@@ -74,7 +74,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 
 builder.Services.AddSingleton<MatchmakingService>();  
-builder.Services.AddSingleton<PlayerService>(); 
+builder.Services.AddSingleton<PlayerService>();
+builder.Services.AddSingleton<StoreService>(); 
 var app = builder.Build();
 
 

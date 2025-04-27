@@ -29,7 +29,7 @@ namespace PlayerMatchmakingAPI.Controllers
     
         [HttpPost("join")]
         [Authorize]  
-        public IActionResult JoinServer([FromBody] PlayerRequest playerRequest)
+        public IActionResult JoinServer()
         {
             var username = User.Identity.Name;  
             var player = _playerService.GetPlayerByUsername(username);

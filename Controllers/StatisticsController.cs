@@ -40,7 +40,8 @@ namespace PlayerMatchmakingAPI.Controllers
             return Ok(new
             {
                 GamesWon = player.GamesWon,
-                CubesCleared = player.CubesCleared
+                CubesCleared = player.CubesCleared,
+                Coins = player.Coins
             });
         }
 
