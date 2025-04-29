@@ -7,11 +7,17 @@ using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Authorization;
 using Swashbuckle.AspNetCore.SwaggerGen;  
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;  
 
-using PlayerMatchmakingAPI.Services;  
+
+using PlayerMatchmakingAPI.Services;
+using PlayerMatchmakingAPI;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Server=localhost;Database=PlayerMatchmakingDB;Trusted_Connection=True;")));
 
 // Services pour l'application
 builder.Services.AddControllers()

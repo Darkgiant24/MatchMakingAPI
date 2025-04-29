@@ -17,9 +17,9 @@ namespace PlayerMatchmakingAPI.Services
             
             _availableCosmetics = new List<Cosmetic>
             {
-                new Cosmetic { Id = 1, Name = "Cosmetic 1", Description = "Il est la", Price = 100},
-                new Cosmetic { Id = 2, Name = "Cosmetic 2", Description = "Il est un peu plus la", Price = 50},
-                new Cosmetic { Id = 3, Name = "Cosmetic 3", Description = "Lui il est un peu moins la.", Price = 150}
+                new Cosmetic { Id = 1, Name = "Cosmetic 1", Description = "A small cosmetic", Price = 10},
+                new Cosmetic { Id = 2, Name = "Cosmetic 2", Description = "A cosmetic", Price = 50},
+                new Cosmetic { Id = 3, Name = "Cosmetic 3", Description = "A huge cosmetic.", Price = 150}
             };
         }
 
